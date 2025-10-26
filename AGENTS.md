@@ -1,5 +1,8 @@
 # Repository Guidelines
 
+## プロジェクト目的と参照資料
+`e_tachibana` は `/Users/rmc-8.com/Code/Lib/e_tachibana/docs/md/mfds_json_api_reference.md` に記載された MFDS JSON API 仕様をもとに、Python ライブラリとして各機能を順次実装することを目的としています。実装順を問わず、常に同ファイルを一次資料として参照し、`docs/src/` 配下に API クライアントやパーサーを追加しながら、`docs/tests/` に対となるテストを整備してください。
+
 ## プロジェクト構成とモジュール配置
 リポジトリ直下の `pyproject.toml` と `uv.lock` が uv ワークスペースと共有依存を定義します。実装は `docs/` 以下にまとまり、`main.py` がスクレイピングと変換のエントリーポイントです。共通ロジックは `docs/src/` に切り出し、CLI や公開 API は `docs/main.py` に集約してください。フィクスチャや HTML テンプレートは `docs/assets/`、テストは `docs/tests/` に配置し、ソース構造をミラーさせると保守しやすくなります。例えば HTML パーサーは `docs/src/parser_city.py`、対応テストは `docs/tests/test_parser_city.py` のように対で管理し、命名と import が直感的になるよう揃えてください。
 
