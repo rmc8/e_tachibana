@@ -5,7 +5,7 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 
-from html_to_markdown import convert
+from html_to_markdown import convert as render_markdown
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -93,10 +93,6 @@ def capture_frame_html(driver: Chrome, config: CaptureConfig) -> str:
     return driver.page_source
 
 
-def render_markdown(html: str) -> str:
-    return convert(html)
-
-
 def save_markdown(markdown: str, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(markdown, encoding="utf-8")
@@ -123,3 +119,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+ 
